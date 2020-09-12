@@ -43,9 +43,9 @@
               class="f-enter-desc"
               href="#"
               v-on:click.prevent="submit()"
-              v-if="!submitted"
-              v-html="language.pressEnter">
-              </a>
+              v-if="!submitted">
+              {{ language.pressEnter | toUpperCase(1) }}
+            </a>
           </slot>
         </div>
       </div>
@@ -145,6 +145,15 @@
         questionList: [],
         questionListActivePath: [],
         reverse: false
+      }
+    },
+    filters: {
+      toUpperCase(value, position) {
+        if (!value) return ''
+        value = value.toString()
+        let stringArr = value.split(" ")
+        stringArr[position] = stringArr[position].toUpperCase()
+        return stringArr.join(" ")
       }
     },
     watch: {

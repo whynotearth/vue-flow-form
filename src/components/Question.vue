@@ -66,7 +66,7 @@
           class="f-enter-desc"
           href="#"
           v-on:click.prevent="onEnter"
-          v-html="language.pressEnter">
+        > {{ language.pressEnter | toUpperCase(1)}}
          </a>
       </div>
 
@@ -125,6 +125,15 @@
       return {
         QuestionType: QuestionType,
         dataValue: null
+      }
+    },
+    filters: {
+      toUpperCase(value, position) {
+        if (!value) return ''
+        value = value.toString()
+        let stringArr = value.split(" ")
+        stringArr[position] = stringArr[position].toUpperCase()
+        return stringArr.join(" ")
       }
     },
     mounted() {

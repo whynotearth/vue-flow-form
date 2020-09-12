@@ -51,7 +51,7 @@
           <a class="f-enter-desc"
             href="#"
             v-on:click.prevent="onSendData()"
-            v-html="language.pressEnter">
+          > {{ language.pressEnter | toUpperCase(1)}}
           </a>
         </div>
 
@@ -78,6 +78,15 @@
     name: 'example',
     components: {
       FlowForm
+    },
+    filters: {
+      toUpperCase(value, position) {
+        if (!value) return ''
+        value = value.toString()
+        let stringArr = value.split(" ")
+        stringArr[position] = stringArr[position].toUpperCase()
+        return stringArr.join(" ")
+      }
     },
     data() {
       return {

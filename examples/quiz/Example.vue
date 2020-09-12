@@ -49,7 +49,7 @@
             class="f-enter-desc"
             href="#"
             v-on:click.prevent="onQuizSubmit()"
-            v-html="language.pressEnter">
+          >{{ language.pressEnter | toUpperCase(1)}}
           </a>
         </div>
         <p class="text-success" v-if="submitted && score < 4">"You scored {{ score }} out of {{ total }}. There's a lot of room for improvement."</p>
@@ -77,6 +77,15 @@
     name: 'example',
     components: {
       FlowForm
+    },
+    filters: {
+      toUpperCase(value, position) {
+        if (!value) return ''
+        value = value.toString()
+        let stringArr = value.split(" ")
+        stringArr[position] = stringArr[position].toUpperCase()
+        return stringArr.join(" ")
+      }
     },
     data() {
       return {
