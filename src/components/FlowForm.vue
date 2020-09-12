@@ -43,8 +43,9 @@
               class="f-enter-desc"
               href="#"
               v-on:click.prevent="submit()"
-              v-if="!submitted">
-             {{ language.pressEnter }}</a>
+              v-if="!submitted"
+              v-html="language.pressEnter">
+              </a>
           </slot>
         </div>
       </div>

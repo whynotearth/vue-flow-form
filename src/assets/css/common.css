@@ -175,6 +175,10 @@ svg.logo {
   margin-bottom: 20px;
 }
 
+.enter {
+  text-transform: uppercase;
+}
+
 /*v-form*/
 .v-form {
   margin-top: 26vh;

@@ -9,7 +9,7 @@ export default class LanguageModel {
   constructor(options) {
     this.ok = 'OK'
     this.continue = 'Continue'
-    this.pressEnter = 'Press ENTER'
+    this.pressEnter = 'Press <span class="enter">enter</span>'
     this.multipleChoiceHelpText = 'Choose as many as you like'
     this.otherPrompt = 'Other'
     this.placeholder = 'Type your answer here...'

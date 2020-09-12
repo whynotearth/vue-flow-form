@@ -65,8 +65,9 @@
         <a 
           class="f-enter-desc"
           href="#"
-          v-on:click.prevent="onEnter">
-          {{ language.pressEnter }}</a>
+          v-on:click.prevent="onEnter"
+          v-html="language.pressEnter">
+         </a>
       </div>
 
       <div v-if="showInvalid()" class="f-invalid" role="alert" aria-live="assertive">{{ language.invalidPrompt }}</div>
