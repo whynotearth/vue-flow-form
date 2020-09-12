@@ -43,8 +43,8 @@
               class="f-enter-desc"
               href="#"
               v-on:click.prevent="submit()"
-              v-if="!submitted">
-              {{ language.pressEnter | toUpperCase(1) }}
+              v-if="!submitted"
+              v-html="insertClass(language.pressEnter)">
             </a>
           </slot>
         </div>
@@ -145,15 +145,6 @@
         questionList: [],
         questionListActivePath: [],
         reverse: false
-      }
-    },
-    filters: {
-      toUpperCase(value, position) {
-        if (!value) return ''
-        value = value.toString()
-        let stringArr = value.split(" ")
-        stringArr[position] = stringArr[position].toUpperCase()
-        return stringArr.join(" ")
       }
     },
     watch: {
@@ -448,8 +439,19 @@
        */
       blurFocus() {
         document.activeElement && document.activeElement.blur && document.activeElement.blur()
-      }
-    }
+      },
+
+      insertClass(value) {
+        if (!value) return ''
+        let stringArr = value.toString().split(" ")
+        for(let i = 0; i < stringArr.length; i++ ){
+          if(stringArr[i][0]=== ":"){
+            stringArr[i]= '<span class="f-language-key">'+ stringArr[i].substring(1) + '</span>'
+          }
+        }
+        return stringArr.join(" ")
+      },
+    },
   }
 </script>
 

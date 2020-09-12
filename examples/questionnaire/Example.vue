@@ -51,7 +51,8 @@
           <a class="f-enter-desc"
             href="#"
             v-on:click.prevent="onSendData()"
-          > {{ language.pressEnter | toUpperCase(1)}}
+            v-html="insertClass(language.pressEnter)"
+          > 
           </a>
         </div>
 
@@ -78,15 +79,6 @@
     name: 'example',
     components: {
       FlowForm
-    },
-    filters: {
-      toUpperCase(value, position) {
-        if (!value) return ''
-        value = value.toString()
-        let stringArr = value.split(" ")
-        stringArr[position] = stringArr[position].toUpperCase()
-        return stringArr.join(" ")
-      }
     },
     data() {
       return {
@@ -298,6 +290,16 @@
         })
 
         return data
+      },
+      insertClass(value) {
+        if (!value) return ''
+        let stringArr = value.toString().split(" ")
+        for(let i = 0; i < stringArr.length; i++ ){
+          if(stringArr[i][0]=== ":"){
+            stringArr[i]= '<span class="f-language-key">'+ stringArr[i].substring(1) + '</span>'
+          }
+        }
+        return stringArr.join(" ")
       }
     }
   }
