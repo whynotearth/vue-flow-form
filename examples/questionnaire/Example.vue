@@ -50,10 +50,8 @@
           </button>
           <a class="f-enter-desc"
             href="#"
-            v-on:click.prevent="onSendData()"
-            v-html="insertClass(language.pressEnter)"
-          > 
-          </a>
+            v-on:click.prevent="onSendData()">
+           {{ language.pressEnter }}</a>
         </div>
 
         <p class="text-success" v-if="submitted">Submitted succesfully.</p>
@@ -290,16 +288,6 @@
         })
 
         return data
-      },
-      insertClass(value) {
-        if (!value) return ''
-        let stringArr = value.toString().split(" ")
-        for(let i = 0; i < stringArr.length; i++ ){
-          if(stringArr[i][0]=== ":"){
-            stringArr[i]= '<span class="f-language-key">'+ stringArr[i].substring(1) + '</span>'
-          }
-        }
-        return stringArr.join(" ")
       }
     }
   }

@@ -65,10 +65,8 @@
         <a 
           class="f-enter-desc"
           href="#"
-          v-on:click.prevent="onEnter"
-          v-html="insertClass(language.pressEnter)"
-        > 
-         </a>
+          v-on:click.prevent="onEnter">
+          {{ language.pressEnter }}</a>
       </div>
 
       <div v-if="showInvalid()" class="f-invalid" role="alert" aria-live="assertive">{{ language.invalidPrompt }}</div>
@@ -128,7 +126,6 @@
         dataValue: null
       }
     },
-
     mounted() {
       this.focusField()
       this.dataValue = this.question.answer
@@ -192,17 +189,7 @@
         }
 
         return q.showInvalid()
-      },
-      insertClass(value) {
-        if (!value) return ''
-        let stringArr  = value.toString().split(" ")
-        for(let i = 0; i < stringArr.length; i++ ){
-          if(stringArr[i][0]=== ":"){
-            stringArr[i]= '<span class="f-language-key">'+ stringArr[i].substring(1) + '</span>'
-          }
-        }
-        return stringArr.join(" ")
-      },
+      }
     },
     computed: {
       mainClasses() {

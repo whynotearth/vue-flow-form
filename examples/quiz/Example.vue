@@ -48,10 +48,8 @@
           <a 
             class="f-enter-desc"
             href="#"
-            v-on:click.prevent="onQuizSubmit()"
-            v-html="insertClass(language.pressEnter)"
-          >
-          </a>
+            v-on:click.prevent="onQuizSubmit()">
+            {{ language.pressEnter }}</a>
         </div>
         <p class="text-success" v-if="submitted && score < 4">"You scored {{ score }} out of {{ total }}. There's a lot of room for improvement."</p>
         <p class="text-success" v-else-if="submitted && score < 7">"You scored {{ score }} out of {{ total }}. Not bad at all!"</p>
@@ -329,17 +327,7 @@
         this.submitted = true 
         this.calculateScore()
       }
-    },
-      insertClass(value) {
-        if (!value) return ''
-        let stringArr = value.toString().split(" ")
-        for(let i = 0; i < stringArr.length; i++ ){
-          if(stringArr[i][0]=== ":"){
-            stringArr[i]= '<span class="f-language-key">'+ stringArr[i].substring(1) + '</span>'
-          }
-        }
-        return stringArr.join(" ")
-      },
+    }
   }
 </script>
 
