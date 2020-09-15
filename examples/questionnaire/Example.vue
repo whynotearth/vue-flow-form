@@ -87,6 +87,14 @@
         // Create question list with QuestionModel instances
         questions: [
           new QuestionModel({
+            id: 'break_000',
+            title: 'Image agreement',
+            content: 'agree to continue',
+            description: 'description or caption here',
+            image: 'https://placehold.it/600x200',
+            type: QuestionType.SectionBreak
+          }),
+          new QuestionModel({
             id: 'first_name',
             tagline: "Hi! Welcome to our demo survey 😊",
             title: 'What is your first name?',
