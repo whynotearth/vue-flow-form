@@ -3,7 +3,15 @@
     <div class="f-content" v-if="question.content">
       <span class="section-text">{{ question.content }}</span>
     </div>
-    <img v-if="question.image" class="f-content--image" :src="question.image" alt="">
+    <template v-if="question.images">
+      <img
+        v-for="image in question.images"
+        :key="image"
+        class="f-content--image"
+        :src="image"
+        alt=""
+      />
+    </template>
   </div>
 </template>
 
@@ -21,9 +29,6 @@
   export default {
     extends: BaseType,
     name: QuestionType.SectionBreak,
-    beforeMount(){
-      console.log(this.question);
-    },
     methods: {
       onEnter() {
         this.dirty = true
